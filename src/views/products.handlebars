@@ -1,0 +1,24 @@
+{{> appbar}}
+<div style="font-family: Roboto">
+  <div>
+        {{!-- <h1 > {{products.page}}</h1> --}}
+    <div id="productCardsContainer">
+    </div>
+    <div id="pageButtonsContainer">
+      <a id="prevButton"></a>
+      <div id="pageCounter"></div>
+      <a id="nextButton"></a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  
+  let products = {{{jsonStringify products}}};
+  let user = {{{jsonStringify user}}};
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="js/products.js"></script>

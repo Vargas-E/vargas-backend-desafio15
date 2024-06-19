@@ -1,0 +1,46 @@
+<div class="authPage">
+  <div class="authContainer">
+    <form class="authCard" action="/api/auth/login" method="POST">
+      <div class="authTitle">LOGIN</div>
+      <label for="email">Email:</label>
+      <input class="input" type="email" id="email" name="email" required />
+      <br />
+      <label for="password">Password:</label>
+      <input
+        class="input"
+        type="password"
+        id="password"
+        name="password"
+        required
+      />
+      <br />
+      <button class="button" type="submit">LOGIN</button>
+      <div class="authRedirect">Don't have an account?
+        <a class="aFix" href="/views/register">Sign up</a>
+      </div>
+
+      <div class="authRedirect">Forgot your password?
+        <a class="aFix" href="/views/request_password_reset">Reset password</a>
+      </div>
+
+      <p>
+        
+    </form>
+    <div class="githubAuth">
+      <a class="aFix" href="/api/auth/github">
+        <span class="linkText">
+          AUTH WITH GITHUB
+        </span>
+        <img class="githubLogo" src="images/github-mark-white.png" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  const error =
+  {{{jsonStringify error}}}
+</script>
+
+<script src="js/login.js"></script>

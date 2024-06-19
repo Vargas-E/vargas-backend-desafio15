@@ -1,0 +1,603 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #009B72;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+h1 {
+    color: black;
+    text-align: center;
+    font-size: 25;
+    padding: 2rem;
+}
+
+input[disabled] {
+    color: white;
+  }
+
+.button {
+    color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 1rem 0.5rem;
+    margin: 1rem 0.5rem;
+    background-color: #1A3A3A;
+    cursor: pointer;
+}
+
+.fixMargin {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
+.appbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #1A3A3A;
+    padding: 2rem 1rem;
+}
+
+.menuButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.navButton {
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+}
+
+.active {
+    color: lightgreen;
+    pointer-events: none;
+}
+
+
+/* Clases para nueva pagina de products */
+#productCardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    max-width: 1000px;
+    margin: auto;
+    justify-content: space-around;
+    gap: 1.5rem;
+}
+
+.productCard {
+    min-width: 250px;
+    background-color: #0c1b1b;
+    height: 50vh;
+    border-radius: 15px;
+}
+
+.productImage {
+    border-radius: 15px 15px 0 0;
+    background-color: aliceblue;
+    height: 60%;
+}
+
+
+
+.productCardMock {
+    width: 250px;
+    background-color: #0c1b1b;
+    height: 50vh;
+    border-radius: 15px;
+}
+
+.productImageMock {
+    border-radius: 15px 15px 0 0;
+    background-color: aliceblue;
+    height: 100%;
+    width: 100%;
+    object-fit:cover;
+}
+
+.productImageContainerMock {
+    border-radius: 15px 15px 0 0;
+    background-color: aliceblue;
+    height: 60%;
+    width: 100%;
+}
+
+
+.textAndButtonContainer {
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    justify-content: space-between;
+    height: 40%;
+}
+
+.newButton {
+    border-radius: 0 0 10px 10px;
+}
+
+.quantityContainer {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    justify-content: space-between;
+    align-content: center;
+    margin: 0.5rem 0;
+
+}
+
+.arrowButton {
+    background-color: #1A3A3A;
+    padding: 1rem;
+    border-radius: 10px;
+    color: white;
+    border: 1px solid black;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.quantityCounter {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #009B72;
+    border-radius: 10px;
+    height: 50px;
+    margin: 0 1rem;
+}
+
+#cartContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 1rem;
+    max-width: 1000px;
+    margin: auto;
+    gap: 1.5rem;
+}
+
+.cardAndIcon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.deleteButtonCart {
+    background-color: darkred;
+    padding: 0.5rem;
+    margin-left: 1rem;
+    height: 20%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.cartCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #0c1b1b;
+    width: 100%;
+    color: white;
+    border-radius: 15px;
+    min-height: 200px;
+
+}
+
+.cartCardTextContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.cartCardImageContainer {
+    background-color: white;
+    width: 40%;
+    border-radius: 0 15px 15px 0;
+}
+
+.cartTotal {
+    color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 1rem 0.5rem;
+    background-color: #0c1b1b;
+    display: flex;
+    justify-content: center;
+}
+
+.disabled {
+    pointer-events: none;
+    background-color: grey;
+}
+
+#pageButtonsContainer {
+    display: flex;
+    margin: 1rem;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#pageCounter {
+    color: white;
+    border-radius: 10px;
+    background-color: #0c1b1b;
+    padding: 1rem;
+}
+
+.logoGreetingContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    text-align: center;
+}
+
+.userData {
+    color: #009B72;
+    text-transform: uppercase;
+}
+
+.greeting {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+}
+
+.authPage {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    gap: 1rem;
+}
+
+.authContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: auto;
+}
+
+.authCard {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: #0c1b1b;
+    color: #009B72;
+    border-radius: 20px;
+    min-width: 300px;
+    min-height: 200px;
+}
+
+.authTitle {
+    font-size: 20px;
+    align-self: center;
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+.authRedirect {
+    align-self: center;
+}
+
+.input {
+    border-radius: 10px;
+    border: 1px solid #1A3A3A;
+    padding: 1rem 0.5rem;
+    margin: 1rem 0rem;
+}
+
+.githubAuth {
+    border-radius: 15px;
+    padding: 1rem 0.5rem;
+    background-color: #0c1b1b;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.githubLogo {
+    height: 25px;
+    vertical-align: middle;
+    object-fit: contain;
+}
+
+.linkText {
+    margin-right: 3rem;
+    vertical-align: middle;
+    color: #009B72;
+    font-weight: bold;
+}
+
+.aFix {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+
+/* real time products*/
+.inputReal {
+    padding: 1rem 0.5rem;
+    margin: 0.5rem;
+    border: 3px solid #1A3A3A;
+    border-radius: 10px;
+}
+
+.labelReal {
+    padding: 0rem 1rem;
+    margin-top: 0.5rem;
+}
+
+.containerReal {
+    display: flex;
+    border-radius: 15px;
+    padding: 1rem;
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 2rem;
+    justify-content: space-between;
+    background-color: #1A3A3A;
+    height: 80vh;
+}
+
+.realtimeProductsContainer {
+    scrollbar-color: #0c1b1b #009B72;
+    width: 55%;
+    overflow-y: scroll;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.formReal {
+    color: white;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    background-color: #0c1b1b;
+    justify-content: start;
+    border-radius: 10px;
+}
+
+
+.card {
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    background-color: lightgreen;
+    margin-bottom: 1rem;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.formRow {
+    display: flex;
+}
+
+.labelAndInput {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+#btnSend {
+    bottom: 0;
+}
+
+
+/* profile */
+.profilePage {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    gap: 1rem;
+}
+
+.align {
+    justify-content: center;
+}
+
+/* .profileCard {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: #0c1b1b;
+    color: #009B72;
+    border-radius: 20px;
+    min-width: 300px;
+    min-height: 200px;
+} */
+
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem auto auto auto;
+}
+
+.profileText {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+
+.placeholderImage {
+    align-self: center;
+    background-color: white;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    margin: 1rem 0 5rem 0;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+
+/* chat */
+
+.chatContainer {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 1000px;
+}
+
+.messagesLogs {
+    border-radius: 10px;
+    border: 5px solid rgb(13, 37, 37);
+    background-color: darkslategray;
+    display: flex;
+    flex-direction: column;
+    max-height: 70vh;
+    min-height: 70vh;
+    overflow-y: scroll;
+    margin: 1rem;
+    scroll-behavior: smooth;
+}
+
+.messagesLogs::-webkit-scrollbar {
+    display: none;
+}
+
+
+.Usermessage {
+    color: black;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: lightgreen;
+    border-radius: 15px;
+    width: fit-content;
+    align-self: flex-end;
+}
+
+.otherMessage {
+    color: black;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: lightgray;
+    border-radius: 15px;
+    width: fit-content;
+}
+
+.user {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.messageText {
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+.chatInputContainer {
+    display: flex;
+    width: 100%;
+}
+
+.chatInput {
+    width: 100%;
+    border: 5px solid rgb(13, 37, 37);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.chatTitle {
+    margin-top: 1rem;
+    align-self: center;
+}
+
+/* Product Page*/
+
+.individualProductCard {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: auto;
+    background-color: #0c1b1b;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    border-radius: 10px;
+}
+
+.individualProductImageContainer {
+    border-radius: 10px 10px 0 0;
+    height: 360px;
+    background-color: white;
+}
+
+.individualProductTextContainer {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    margin: auto;
+    flex-grow: 9999;
+    color: white;
+    width: 90%;
+}
+
+.desc {
+    display: flex;
+    margin: auto;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.fixMargin2 {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+.goBackButton {
+    text-decoration: none;
+    color: white;
+}
+
+.align {
+    max-width: 1000px;
+    background-color: #0c1b1b;
+    width: 100%;
+    display: flex;
+    margin: auto;
+}
+
+/* ticket page*/
+
+.ticketTitle {
+    margin-bottom: 2rem;
+}
+
+
+.deleteHorizontalMargin {
+    margin-left: 0;
+}

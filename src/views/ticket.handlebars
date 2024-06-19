@@ -1,0 +1,28 @@
+{{> appbar}}
+
+<div id="cartContainer">
+  <div class="cartCard">
+    <div style="font-size: 1.3rem; text-align:center; margin: auto; width: 70%">
+      <div class="ticketTitle">Your purchase has been completed!</div>
+
+      <div class="profileText">
+        <div>Purchase ticket code: </div>
+        <div>{{ticket.code}}</div>
+      </div>
+      <div class="profileText">
+        <div>Purchase time: </div>
+        <div>{{{formatDate ticket.purchase_datetime}}}</div>
+      </div>
+      <div class="profileText">
+        <div>Total: </div>
+        <div>$ {{ticket.amount}}</div>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+
+<button class="button align"><a class="goBackButton" href="/views/products">GO
+    BACK TO PRODUCTS</a></button>

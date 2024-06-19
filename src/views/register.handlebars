@@ -1,0 +1,60 @@
+<div class="authPage">
+  <div class="authContainer">
+    <form class="authCard" action="/api/auth/register" method="post">
+      <div class="authTitle">SIGN UP</div>
+
+      <label for="first_name">First Name:</label>
+      <input
+        class="input"
+        type="text"
+        id="first_name"
+        name="first_name"
+        required
+      />
+      <br />
+      <label for="last_name">Last Name:</label>
+      <input
+        class="input"
+        type="text"
+        id="last_name"
+        name="last_name"
+        required
+      />
+      <br />
+      <label for="email">Email:</label>
+      <input class="input" type="email" id="email" name="email" required />
+      <br />
+      <label for="password">Password:</label>
+      <input
+        class="input"
+        type="password"
+        id="password"
+        name="password"
+        required
+      />
+      <br />
+      <label for="age">Age:</label>
+      <input class="input" type="number" id="age" name="age" required />
+      <br />
+      <button class="button" type="submit">SIGN UP</button>
+      <div class="authRedirect">Already have an account?
+        <a class="aFix" href="/views/login">Log in</a></div>
+    </form>
+    <div class="githubAuth">
+      <a class="aFix" href="/api/auth/github">
+        <span class="linkText">
+          AUTH WITH GITHUB
+        </span>
+
+        <img class="githubLogo" src="images/github-mark-white.png" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  const error = {{{jsonStringify error}}}
+</script>
+
+<script src="js/register.js"></script>

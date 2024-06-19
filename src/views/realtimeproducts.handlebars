@@ -1,0 +1,96 @@
+{{> appbar}}
+<div style="font-family: Roboto">
+  <div class="containerReal">
+    <div class="realtimeProductsContainer" id="productsContainer"></div>
+    <form class="formReal">
+
+      <div class="formRow">
+        <div class="labelAndInput">
+          <label class="labelReal" for="title">Título</label>
+          <input
+            class="inputReal"
+            type="text"
+            id="title"
+            placeHolder="Título"
+          />
+        </div>
+        <div class="labelAndInput">
+          <label class="labelReal" for="price">Precio</label>
+          <input
+            class="inputReal"
+            type="number"
+            id="price"
+            placeHolder="Precio"
+          />
+        </div>
+      </div>
+
+      <div class="formRow">
+        <div class="labelAndInput">
+          <label class="labelReal" for="img">Img</label>
+          <input
+            class="inputReal"
+            type="text"
+            id="img"
+            placeHolder="Sin imagen"
+          />
+        </div>
+        <div class="labelAndInput">
+          <label class="labelReal" for="code">Código</label>
+          <input class="inputReal" type="text" id="code" placeHolder="Código" />
+        </div>
+      </div>
+
+      <div class="formRow">
+        <div class="labelAndInput">
+          <label class="labelReal" for="stock">Stock</label>
+          <input
+            class="inputReal"
+            type="number"
+            id="stock"
+            placeHolder="Stock"
+          />
+        </div>
+        <div class="labelAndInput">
+          <label class="labelReal" for="category">Categoria</label>
+          <input
+            class="inputReal"
+            type="text"
+            id="category"
+            placeHolder="Categoria"
+          />
+        </div>
+      </div>
+
+      <div class="formRow">
+        <div class="labelAndInput">
+          <label class="labelReal" for="status">Status</label>
+          <select class="inputReal" id="status">
+            <option value="true"> Activo </option>
+            <option value="false"> Inactivo </option>
+          </select>
+        </div>
+      </div>
+          <label class="labelReal" for="description">Descripción</label>
+          <textarea
+            rows="6"
+            class="inputReal"
+            type="text"
+            id="description"
+            placeHolder="Descripción"
+          ></textarea>
+      <button class="button hidden" id="btnCancelEdit"> CANCEL EDIT </button>
+      <button class="button hidden" id="btnSubmitEdit"> SUBMIT EDIT </button>
+      <button class="button" id="btnSend"> E N V I A R </button>
+    </form>
+  </div>
+</div>
+
+<script>
+    let user = {{{jsonStringify user}}};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"
+></script>
+<script src="js/realtime_products.js"></script>

@@ -1,0 +1,255 @@
+paths:
+  /api/products:
+    get:
+      summary: Get Products from Db
+      tags:
+        - Products
+      responses:
+        "200":
+          description: "Get all products"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Product"
+        "500":
+          description: Server error
+    post:
+      summary: Create Product
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/createProduct"
+      responses:
+        "201":
+          description: Product created
+  /api/products/{uid}:
+    get:
+      summary: Get Product from Db
+      tags:
+        - Products
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: Product id to search for
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "Get a product by Id"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Product"
+        "500":
+          description: Server error
+    delete:
+      summary: Delete Product from Db
+      tags:
+        - Products
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: Product id to search for
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "Product deleted"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Product"
+        "500":
+          description: Server error
+    put:
+      summary: Update Product
+      tags:
+        - Products
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: Product id to update
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/createProduct"
+      responses:
+        "201":
+          description: Product updated
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: MongoDB id
+        title:
+          type: string
+          description: The title of the product
+        description:
+          type: string
+          description: The description of the product
+        price:
+          type: number
+          description: The price of the product
+          example:
+        img:
+          type: string
+          description: The image URL of the product
+        code:
+          type: string
+          description: The unique code of the product
+        stock:
+          type: number
+          description: The stock quantity of the product
+          example:
+        category:
+          type: string
+          description: The category of the product
+        status:
+          type: boolean
+          description: The availability status of the product
+        thumbnails:
+          type: array
+          items:
+            type: string
+          description: Array of thumbnail image URLs
+        owner:
+          type: string
+          description: The owner of the product
+      example:
+        _id: ObjectId('123454')
+        title: Product A
+        description: This is a sample product
+        price: 29.99
+        img: http://example.com/image.jpg
+        code: PROD001
+        stock: 100
+        category: Electronics
+        status: true
+        thumbnails: [http://example.com/thumb1.jpg]
+        owner: user123
+  requestBodies:
+    createProduct:
+      type: object
+      properties:
+        title:
+          type: string
+          description: The title of the product
+        description:
+          type: string
+          description: The description of the product
+        price:
+          type: number
+          description: The price of the product
+        img:
+          type: string
+          description: The image URL of the product
+        code:
+          type: string
+          description: The unique code of the product
+        stock:
+          type: number
+          description: The stock quantity of the product
+        category:
+          type: string
+          description: The category of the product
+        status:
+          type: boolean
+          description: The availability status of the product
+        thumbnails:
+          type: array
+          items:
+            type: string
+          description: Array of thumbnail image URLs
+        owner:
+          type: string
+          description: The owner of the product
+      required:
+        - title
+        - description
+        - price
+        - code
+        - stock
+        - category
+        - status
+        - owner
+      example:
+        title: Product A
+        description: This is a sample product
+        price: 29.99
+        img: http://example.com/image.jpg
+        code: PROD001
+        stock: 100
+        category: Electronics
+        status: true
+        thumbnails:
+          - http://example.com/thumb1.jpg
+          - http://example.com/thumb2.jpg
+        owner: user123
+    updateProduct:
+      type: object
+      properties:
+        title:
+          type: string
+          description: The title of the product
+        description:
+          type: string
+          description: The description of the product
+        price:
+          type: number
+          description: The price of the product
+        img:
+          type: string
+          description: The image URL of the product
+        code:
+          type: string
+          description: The unique code of the product
+        stock:
+          type: number
+          description: The stock quantity of the product
+        category:
+          type: string
+          description: The category of the product
+        status:
+          type: boolean
+          description: The availability status of the product
+        thumbnails:
+          type: array
+          items:
+            type: string
+          description: Array of thumbnail image URLs
+        owner:
+          type: string
+          description: The owner of the product
+      example:
+        title: Product B
+        description: This is a sample product
+        price: 29.99
+        img: http://example.com/image.jpg
+        code: PROD100
+        stock: 1000
+        category: Electronics
+        status: true
+        thumbnails:
+          - http://example.com/thumb1.jpg
+          - http://example.com/thumb2.jpg
+        owner: user123
