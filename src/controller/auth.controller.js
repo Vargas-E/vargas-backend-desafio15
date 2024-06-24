@@ -1,10 +1,12 @@
 const jwt = require("jsonwebtoken");
 const UserModel = require("../models/user.model");
+const UserRepository = require("../repositories/users.repository.js");
 const layer = "Controller";
 const router = "Auth";
 const { generateResetToken } = require("../utils/tokenreset.js");
 const { createHash, isValidPassword } = require("../utils/hashbcryp.js");
 
+const userRepository = new UserRepository();
 const EmailManager = require("../helpers/email.js");
 const emailManager = new EmailManager();
 
@@ -29,6 +31,10 @@ class AuthController {
         maxAge: 3600000,
         httpOnly: true,
       });
+
+      const userInDb = userRepository.findByEmail(email);
+      user.last_connection = new Date();
+      await userInDb.save();
       if (userForToken.rol == "admin") {
         res.redirect("/views/realtime_products");
       } else {
@@ -65,6 +71,10 @@ class AuthController {
         maxAge: 3600000,
         httpOnly: true,
       });
+
+      const userInDb = userRepository.findByEmail(email);
+      user.last_connection = new Date();
+      await userInDb.save();
 
       res.redirect("/views/products");
     } catch (error) {
@@ -193,14 +203,74 @@ class AuthController {
       if (!user) {
         return res.status(404).json({ message: "User Not Found" });
       }
-      const newRol = user.rol === "user" ? "premium" : "user";
-      const updated = await UserModel.findByIdAndUpdate(uid, { rol: newRol });
-      res.json(updated);
+      const requiredDocs = ["Identificacion", "Comprobante de domicilio", "Comprobante de estado de cuenta"];
+      const userDocuments = user.documents.map(e => e.name);
+      const docsExists = requiredDocs.every(e => userDocuments.includes(e))
+      if (docsExists) {
+        const newRol = user.rol === "user" ? "premium" : "user";
+        const updated = await UserModel.findByIdAndUpdate(uid, { rol: newRol });
+        res.json(updated);
+      } else {
+        res.status(400).send("User docs not found. Denied upgrade to premium user");
+      }
+
     } catch (err) {
       req.logger.error(
         `Error while changing role. Layer:${layer}, Router: ${router}. Error: ${err}, Date: ${new Date()}`
       );
       res.status(400).send({ error: "Error while changing role" });
+    }
+  }
+
+  async uploadUserFile(req, res) {
+    const { uid } = req.params;
+    const uploadedDocuments = req.files;
+    try {
+      const user = await userRepository.findById(uid);
+      if (!user) {
+        return res.status(404).send("User not found");
+      }
+      if (uploadedDocuments) {
+        if (uploadedDocuments.document) {
+          user.documents = user.documents.concat(
+            uploadedDocuments.document.map((doc) => ({
+              name: doc.originalname,
+              reference: doc.path,
+            }))
+          );
+        }
+
+        if (uploadedDocuments.products) {
+          user.documents = user.documents.concat(
+            uploadedDocuments.products.map((doc) => ({
+              name: doc.originalname,
+              reference: doc.path,
+            }))
+          );
+        }
+
+        if (uploadedDocuments.profile) {
+          user.documents = user.documents.concat(
+            uploadedDocuments.profile.map((doc) => ({
+              name: doc.originalname,
+              reference: doc.path,
+            }))
+          );
+        }
+      }
+
+      //Guardamos los cambios en la base de datos:
+
+      await user.save();
+
+      res.status(200).send("Documentos cargados exitosamente");
+    } catch (error) {
+      console.log(error);
+      res
+        .status(500)
+        .send(
+          "Error interno del servidor, los mosquitos seran cada vez mas grandes"
+        );
     }
   }
 }

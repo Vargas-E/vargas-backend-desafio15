@@ -39,6 +39,8 @@ const initializePassport = () => {
             rol: "user",
             password: createHash(password),
             cart: newCartId.id,
+            documents: [],
+            last_connection: Date.now,
           };
 
           let result = await UserModel.create(newUser);
@@ -68,6 +70,8 @@ const initializePassport = () => {
             age: 30,
             rol: "admin",
             cart: "1",
+            documents: [],
+            last_connection: Date.now
           };
           return done(null, user);
         } else {

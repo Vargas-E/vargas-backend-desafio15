@@ -6,6 +6,8 @@ const jwt = require("jsonwebtoken");
 const AuthController = require("../controller/auth.controller.js");
 const authController = new AuthController();
 
+const upload = require("../middlewares/multer.js");
+
 router.post(
   "/login",
   passport.authenticate("login", {
@@ -47,12 +49,20 @@ router.get(
 
 router.get("/logout", authController.logout);
 
+router.post("/requestPasswordReset", authController.requestPasswordReset);
 
-router.post("/requestPasswordReset", authController.requestPasswordReset); 
-
-router.post('/reset-password', authController.resetPassword);
+router.post("/reset-password", authController.resetPassword);
 
 router.put("/premium/:uid", authController.changeRolToPremium);
 
+router.post(
+  "/:uid/documents",
+  upload.fields([
+    { name: "document" },
+    { name: "products" },
+    { name: "profile" },
+  ]),
+  authController.uploadUserFile
+);
 
 module.exports = router;
